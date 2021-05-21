@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:laravel-app}/database/database.sqlite",
+            "name": "11111"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
