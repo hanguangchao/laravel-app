@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +21,12 @@ use App\Http\Controllers\PostController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/redis', function () {
+    $res = DB::table('users')->get();
+    return response()->json($res);
+});
+
 
 //路由命名
 // <a href="{{ route('user.profile', ['id' => 100]) }}">
@@ -34,5 +45,16 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+Route::get('/facade', function () {
+    
+    Cache::set('kkk', 'vvvv');
+    // dd(Cache::getStore());
+    dd(app()->cache);
+    // $res = Client::get('https://36kr.com/', [
+    //     'timeout' => 3,
+    // ]);
+    // dd($res);
+//    return [$res];
+});
 
 Route::resource('post', PostController::class);

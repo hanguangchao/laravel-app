@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\HttpClient;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return ['aaaa'];
+        
     }
 
     /**
