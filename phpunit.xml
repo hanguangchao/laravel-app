@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
-         bootstrap="vendor/autoload.php"
-         colors="true"
->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd" bootstrap="vendor/autoload.php" colors="true">
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
@@ -16,6 +12,15 @@
         <include>
             <directory suffix=".php">./app</directory>
         </include>
+
+        <report>
+            <clover outputFile="/tpm/clover.xml"/>
+            <crap4j outputFile="/tmp/crap4j.xml" threshold="50"/>
+            <html outputDirectory="/tmp/html-coverage" lowUpperBound="50" highLowerBound="90"/>
+            <php outputFile="/tmp/coverage.php"/>
+            <text outputFile="/tmp/coverage.txt" showUncoveredFiles="false" showOnlySummary="true"/>
+            <xml outputDirectory="/tmp/xml-coverage"/>
+        </report>
     </coverage>
     <php>
         <server name="APP_ENV" value="testing"/>
@@ -28,4 +33,12 @@
         <server name="SESSION_DRIVER" value="array"/>
         <server name="TELESCOPE_ENABLED" value="false"/>
     </php>
+    <logging>
+        <junit outputFile="/tmp/junit.xml"/>
+        <teamcity outputFile="/tmp/teamcity.txt"/>
+        <testdoxHtml outputFile="/tmp/testdox.html"/>
+        <testdoxText outputFile="/tmp/testdox.txt"/>
+        <testdoxXml outputFile="/tmp/testdox.xml"/>
+        <text outputFile="/tmp/logfile.txt"/>
+    </logging>
 </phpunit>

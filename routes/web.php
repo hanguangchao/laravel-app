@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -46,15 +47,16 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/facade', function () {
-    
     Cache::set('kkk', 'vvvv');
     // dd(Cache::getStore());
-    dd(app()->cache);
+    //dd(app()->cache);
     // $res = Client::get('https://36kr.com/', [
     //     'timeout' => 3,
     // ]);
     // dd($res);
-//    return [$res];
+    // return [$res];
 });
 
-Route::resource('post', PostController::class);
+// Route::resource('post', PostController::class);
+
+Route::resource('posts', PostsController::class);
